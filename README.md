@@ -29,23 +29,43 @@ P.S.: In this case, 192.168.0.1 is the remote syslogd server. Moreover, after ev
 
 
 The commands below presents the structure of the MySQL database being used.
-CREATE DATABASE security;
-CREATE TABLE threats (id INT NOT NULL AUTO_INCREMENT, s_time VARCHAR(20), sensor VARCHAR(20), engine VARCHAR(20), threat VARCHAR(200), classification VARCHAR(50), priority INT, protocol VARCHAR(11), srcip VARCHAR(20), srcport INT, dstip VARCHAR(20), dstport INT, PRIMARY KEY (id));
+
+mysql> CREATE DATABASE security;
+
+mysql> CREATE TABLE threats (id INT NOT NULL AUTO_INCREMENT, s_time VARCHAR(20), sensor VARCHAR(20), engine VARCHAR(20), threat VARCHAR(200), classification VARCHAR(50), priority INT, protocol VARCHAR(11), srcip VARCHAR(20), srcport INT, dstip VARCHAR(20), dstport INT, PRIMARY KEY (id));
+
 mysql> desc threats;
+
 +----------------+--------------+------+-----+---------+----------------+
+
 | Field          | Type         | Null | Key | Default | Extra          |
+
 +----------------+--------------+------+-----+---------+----------------+
+
 | id             | int(11)      | NO   | PRI | NULL    | auto_increment |
+
 | s_time         | varchar(20)  | YES  |     | NULL    |                |
+
 | sensor         | varchar(20)  | YES  |     | NULL    |                |
+
 | engine         | varchar(20)  | YES  |     | NULL    |                |
+
 | threat         | varchar(200) | YES  |     | NULL    |                |
+
 | classification | varchar(50)  | YES  |     | NULL    |                |
+
 | priority       | int(11)      | YES  |     | NULL    |                |
+
 | protocol       | varchar(11)  | YES  |     | NULL    |                |
+
 | srcip          | varchar(20)  | YES  |     | NULL    |                |
+
 | srcport        | int(11)      | YES  |     | NULL    |                |
+
 | dstip          | varchar(20)  | YES  |     | NULL    |                |
+
 | dstport        | int(11)      | YES  |     | NULL    |                |
+
 +----------------+--------------+------+-----+---------+----------------+
+
 12 rows in set (0.00 sec)
