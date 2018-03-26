@@ -2,6 +2,7 @@
 Fat Winnie, a Syslog Relay dedicated to receiving Snort's Syslog alerts, sending them out through SMTP, and storing them in a MySQL database.
 
 
+
 The following instruction shows how to tweak Snort in an effort to let it send out its alerts through Syslog protocol.
 
 root@LinuxTest:~# snort -V
@@ -17,15 +18,22 @@ root@LinuxTest:~# snort -V
 
 
 root@LinuxTest:~# cat /etc/rsyslog.conf|grep '*.*'|grep 514|grep -v '#'
+
 *.*                             @192.168.0.1:514
 
+
 root@LinuxTest:~# cat /etc/snort/snort_syslog.conf|grep syslog|grep -v '#'
+
 output alert_syslog: host=192.168.0.1:514, LOG_LOCAL1 LOG_ALERT
 
+
 root@LinuxTest:~# ps -aef|grep snort
+
 root      8709     1  0 01:59 ?        00:00:02 /usr/sbin/snort -c /etc/snort/snort_syslog.conf -i eth0 -A full -D -s
 
+
 P.S.: In this case, 192.168.0.1 is the remote syslogd server. Moreover, after everything above is set, rebooting the system is a must. Otherwise, the rsyslogd may not function properly.
+
 
 
 The commands below presents the structure of the MySQL database being used.
